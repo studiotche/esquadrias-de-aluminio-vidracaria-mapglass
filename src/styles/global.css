@@ -1,11 +1,14 @@
 :root {
   --color-white: #FFFFFF;
   --color-dark: #192321;
-  --color-green: #AAE8D9;
+  --color-cyan: #19B6D7;
+  --color-cyan-hover: #149bb7;
+  --color-cyan-dark: #095c73;
+  --color-green: #19B6D7;
   /* #555555 delivers 7.46:1 contrast ratio against #FFFFFF, meeting WCAG AAA */
   --color-text-secondary: #555555;
   --color-border: #E5E5E5;
-  --color-focus: #AAE8D9;
+  --color-focus: #19B6D7;
   --font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --container-width: 1300px;
   --transition-fast: 0.2s ease;
@@ -122,12 +125,13 @@ button:focus-visible {
 }
 
 .btn-secondary {
-  background-color: var(--color-green);
+  background-color: var(--color-cyan);
   color: var(--color-dark);
+  font-weight: 700;
 }
 
 .btn-secondary:hover {
-  background-color: #8ed5c4;
+  background-color: var(--color-cyan-hover);
 }
 
 /* Header */
@@ -492,8 +496,8 @@ button:focus-visible {
 }
 
 .solution-link:hover {
-  color: #08634a;
-  border-color: #08634a;
+  color: var(--color-cyan-dark);
+  border-color: var(--color-cyan-dark);
 }
 
 /* Projects */
@@ -633,7 +637,7 @@ button:focus-visible {
 }
 
 .about-content .eyebrow {
-  color: #08634a; /* Accessible green on white (WCAG AAA 7.2:1) */
+  color: var(--color-cyan-dark); /* Accessible deep cyan on white (WCAG AAA 7.15:1) */
   margin-bottom: 12px;
   font-weight: 800;
 }
@@ -661,8 +665,8 @@ button:focus-visible {
 }
 
 .about-link:hover {
-  color: #08634a;
-  border-color: #08634a;
+  color: var(--color-cyan-dark);
+  border-color: var(--color-cyan-dark);
 }
 
 /* CTA Section */
@@ -844,7 +848,7 @@ button:focus-visible {
 }
 
 .footer-cta-btn {
-  background-color: var(--color-green);
+  background-color: var(--color-cyan);
   color: var(--color-dark);
   font-weight: 700;
   font-size: 1rem;
@@ -860,7 +864,7 @@ button:focus-visible {
 }
 
 .footer-cta-btn:hover {
-  background-color: #8ed5c4;
+  background-color: var(--color-cyan-hover);
 }
 
 .footer-cta-btn i {
