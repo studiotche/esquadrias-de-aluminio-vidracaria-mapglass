@@ -1,11 +1,9 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-const pagesBase = process.env.PAGES_BASE ?? "/lavanderia-ivoti/";
-
 export default defineConfig({
-  site: "https://studiotche.github.io",
-  base: pagesBase,
+  site: process.env.SITE_URL ?? "https://studiotche.github.io",
+  base: process.env.PAGES_BASE ?? "/vidracaria-esquadria-mapglass",
   output: "static",
   integrations: [sitemap()],
   build: { format: "directory" },

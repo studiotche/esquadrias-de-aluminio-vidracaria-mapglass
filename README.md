@@ -1,13 +1,36 @@
-# Lavanderia Ivoti
+# Vidraçaria e Esquadrias Mapglass (AlumiArt Ijuí)
 
-Site institucional da Lavanderia Ivoti, desenvolvido em Astro.
+Site institucional de alta performance para **Vidraçaria e Esquadrias Mapglass / AlumiArt Ijuí**, desenvolvido com [Astro](https://astro.build/).
 
-O conteúdo público foi organizado a partir do perfil do Google Maps e do Instagram `@lavanderia_ivoti`. A coleta bruta, os dados normalizados e as imagens de referência ficam em [`imagens-google-maps`](./imagens-google-maps).
+## Tecnologias
 
-## Dados confirmados na coleta
+- **Astro v5+** — Static Site Generation (SSG) de alta velocidade
+- **TypeScript** — Tipagem estática e segurança de código
+- **Lenis** — Smooth scrolling nativo
+- **Phosphor Icons & Font Awesome** — Iconografia moderna
+- **GitHub Pages & Actions** — Deploy contínuo automatizado
 
-- Av. Pres. Lucena, 2084 — Concórdia, Ivoti/RS
-- Telefone exibido no Google Maps: (51) 3563-6908
-- Instagram: [@lavanderia_ivoti](https://www.instagram.com/lavanderia_ivoti/)
+## Desenvolvimento Local
 
-O perfil do Google Maps sinaliza que o cadastro pode estar fechado ou precisar de atualização. Por isso, o site informa que os horários devem ser confirmados antes da visita.
+```bash
+# Instalar dependências
+npm install
+
+# Iniciar servidor de desenvolvimento
+npm run dev
+
+# Gerar build estático
+npm run build
+
+# Pré-visualizar build de produção
+npm run preview
+```
+
+## Deploy no GitHub Pages
+
+O projeto conta com o workflow oficial do Astro configurado em `.github/workflows/deploy.yml`.
+
+A cada push na branch `main`:
+1. O GitHub Actions compila o site estático usando `withastro/action`.
+2. Os artefatos são publicados automaticamente no GitHub Pages em:
+   `https://studiotche.github.io/vidracaria-esquadria-mapglass/`

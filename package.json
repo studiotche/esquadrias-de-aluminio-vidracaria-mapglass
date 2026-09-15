@@ -1,11 +1,11 @@
 {
-  "name": "lavanderia-ivoti",
+  "name": "vidracaria-esquadria-mapglass",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "check": "astro check"
   },
