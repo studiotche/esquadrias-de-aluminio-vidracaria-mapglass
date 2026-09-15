@@ -870,14 +870,32 @@ button:focus-visible {
 
 .footer-location {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.95rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-location:hover {
+  color: var(--color-green);
 }
 
 .footer-location i {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
+  margin-top: 2px;
+  color: var(--color-green);
+}
+
+.footer-location div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footer-address {
+  font-size: 0.825rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .footer-bottom {

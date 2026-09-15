@@ -18,18 +18,27 @@ const ogImage = new URL(asset(site.seo.ogImage), Astro.site ?? site.seo.url);
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
-  name: site.name,
+  name: site.legalName,
+  alternateName: site.name,
   description: site.seo.description,
   url: site.seo.url,
   image: ogImage.toString(),
   telephone: site.phoneDisplay,
-  sameAs: [site.instagramUrl, site.facebookUrl],
+  sameAs: [site.instagramUrl, site.facebookUrl, site.googleMapsUrl],
   address: {
     "@type": "PostalAddress",
+    streetAddress: site.address,
     addressLocality: site.city,
     addressRegion: site.state,
+    postalCode: site.postalCode,
     addressCountry: "BR",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: site.geo.latitude,
+    longitude: site.geo.longitude,
+  },
+  hasMap: site.googleMapsUrl,
   priceRange: "$$",
 };
 ---

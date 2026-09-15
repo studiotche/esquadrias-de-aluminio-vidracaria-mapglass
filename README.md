@@ -1,6 +1,6 @@
-# Vidraçaria e Esquadrias Mapglass (AlumiArt Ijuí)
+# MAP GLASS - Esquadrias de Alumínio & Vidraçaria
 
-Site institucional de alta performance para **Vidraçaria e Esquadrias Mapglass / AlumiArt Ijuí**, desenvolvido com [Astro](https://astro.build/).
+Site institucional de alta performance para a **MAP GLASS - Esquadrias de Alumínio & Vidraçaria** (Novo Hamburgo - RS), desenvolvido com [Astro](https://astro.build/).
 
 ## Tecnologias
 

@@ -14,10 +14,10 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
   <!-- Header -->
   <header class="header">
     <div class="container header-container">
-      <a href="#inicio" class="logo-link" aria-label="AlumiArt Ijuí - Início">
+      <a href="#inicio" class="logo-link" aria-label="MAP GLASS - Início">
         <img
           src={asset(site.assets.logo)}
-          alt="AlumiArt Ijuí"
+          alt="MAP GLASS - Esquadrias de Alumínio & Vidraçaria"
           class="logo"
           width="180"
           height="56"
@@ -63,7 +63,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
       <div class="hero-bg">
         <img
           src={asset(site.assets.hero)}
-          alt="Fachada com esquadrias de alumínio e portas de vidro"
+          alt="Fachada moderna de alto padrão com esquadrias em alumínio e grandes painéis em vidro"
           loading="eager"
           fetchpriority="high"
           decoding="async"
@@ -72,7 +72,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
       </div>
       <div class="container hero-container">
         <div class="hero-content">
-          <span class="eyebrow">ESQUADRIAS EM ALUMÍNIO &bull; IJUÍ / RS</span>
+          <span class="eyebrow">ESQUADRIAS EM ALUMÍNIO &bull; NOVO HAMBURGO / RS</span>
           <h1 id="hero-heading">
             Design que valoriza.<br />Qualidade que<br />permanece.
           </h1>
@@ -102,7 +102,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
     </section>
 
     <!-- Trust Banner -->
-    <section class="trust-banner" aria-label="Diferenciais da AlumiArt">
+    <section class="trust-banner" aria-label="Diferenciais da MAP GLASS">
       <div class="container trust-container">
         {
           trustItems.map((item, index) => (
@@ -218,28 +218,28 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
         <div class="about-image-wrapper">
           <img
             src={asset(site.assets.about)}
-            alt="Detalhe de perfil de alumínio e maçaneta com acabamento preciso"
+            alt="Equipe de especialistas e fábrica da MAP GLASS em Novo Hamburgo"
             class="about-image"
             loading="lazy"
             decoding="async"
           />
         </div>
         <div class="about-content">
-          <span class="eyebrow">SOBRE A ALUMIART</span>
+          <span class="eyebrow">SOBRE A MAP GLASS</span>
           <h2 id="about-heading">
             Precisão no detalhe.<br />Cuidado em cada projeto.
           </h2>
           <p>
-            Há 15 anos, a AlumiArt une qualidade, elegância e modernidade em projetos residenciais e comerciais.
+            A MAP GLASS une qualidade, acabamento refinado e modernidade em soluções sob medida para esquadrias de alumínio e vidros temperados. Atendemos Novo Hamburgo e toda a região do Vale dos Sinos com pontualidade, atendimento consultivo e fabricação própria.
           </p>
           <a
             href={site.instagramUrl}
             class="link-with-arrow about-link"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Conheça a AlumiArt no Instagram"
+            aria-label="Conheça a MAP GLASS no Instagram"
           >
-            <span>Conheça a AlumiArt</span>
+            <span>Conheça a MAP GLASS</span>
             <i class="ph ph-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
@@ -278,7 +278,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
         <div class="footer-brand">
           <img
             src={asset(site.assets.logoWhite)}
-            alt="AlumiArt Ijuí"
+            alt="MAP GLASS - Esquadrias de Alumínio & Vidraçaria"
             class="footer-logo"
             loading="lazy"
             decoding="async"
@@ -286,7 +286,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
             height="72"
           />
           <p class="footer-desc">
-            Esquadrias sob medida.<br />Qualidade, elegância e modernidade.
+            Esquadrias sob medida e vidraçaria de alto padrão.<br />Qualidade, elegância e modernidade no Vale dos Sinos.
           </p>
           <h3 class="footer-title">ACOMPANHE NOSSOS PROJETOS</h3>
           <div class="footer-social">
@@ -295,7 +295,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
                 href={site.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram da AlumiArt"
+                aria-label="Instagram da MAP GLASS"
                 class="social-btn"
               >
                 <i class="fa-brands fa-instagram" aria-hidden="true"></i>
@@ -304,7 +304,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
                 href={site.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Facebook da AlumiArt"
+                aria-label="Facebook da MAP GLASS"
                 class="social-btn"
               >
                 <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
@@ -328,7 +328,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
             <li><a href="#inicio">Início</a></li>
             <li><a href="#solucoes">Soluções</a></li>
             <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#sobre">Sobre a AlumiArt</a></li>
+            <li><a href="#sobre">Sobre a MAP GLASS</a></li>
           </ul>
         </div>
 
@@ -355,15 +355,24 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
             <span>Solicitar orçamento</span>
             <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
           </a>
-          <div class="footer-location">
+          <a
+            href={site.googleMapsUrl}
+            class="footer-location"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ver localização da MAP GLASS no Google Maps"
+          >
             <i class="ph ph-map-pin" aria-hidden="true"></i>
-            <span>{site.locationDisplay}</span>
-          </div>
+            <div>
+              <span>{site.locationDisplay}</span>
+              <small class="footer-address">{site.address}</small>
+            </div>
+          </a>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; AlumiArt. Todos os direitos reservados.</p>
+        <p>&copy; MAP GLASS - Esquadrias de Alumínio & Vidraçaria. Todos os direitos reservados.</p>
         <div class="footer-bottom-links">
           <a href="#" class="privacy-link">Política de privacidade</a>
           <span class="footer-bottom-divider" aria-hidden="true">|</span>
