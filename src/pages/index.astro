@@ -12,7 +12,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
   <a class="skip-link" href="#inicio">Ir para o conteúdo principal</a>
 
   <!-- Header -->
-  <header class="header">
+  <header class="header site-header">
     <div class="container header-container">
       <a href="#inicio" class="logo-link" aria-label="MAP GLASS - Início">
         <img
@@ -124,14 +124,14 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
       </div>
       <div class="container hero-container">
         <div class="hero-content">
-          <span class="eyebrow">ESQUADRIAS EM ALUMÍNIO &bull; NOVO HAMBURGO / RS</span>
-          <h1 id="hero-heading">
+          <span class="eyebrow hero-animate-up">ESQUADRIAS EM ALUMÍNIO &bull; NOVO HAMBURGO / RS</span>
+          <h1 id="hero-heading" class="hero-animate-up hero-delay-80">
             Design que valoriza.<br />Qualidade que<br />permanece.
           </h1>
-          <p>
+          <p class="hero-animate-up hero-delay-160">
             Esquadrias sob medida para transformar seu projeto em um lugar especial.
           </p>
-          <div class="hero-actions">
+          <div class="hero-actions hero-animate-up hero-delay-240">
             <a
               href={site.whatsappUrl}
               class="btn btn-secondary"
@@ -147,7 +147,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
             </a>
           </div>
         </div>
-        <div class="hero-caption">
+        <div class="hero-caption hero-animate-up hero-delay-320">
           <p>Alumínio, vidro e novas possibilidades.</p>
         </div>
       </div>

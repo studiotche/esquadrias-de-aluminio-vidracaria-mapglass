@@ -39,6 +39,40 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (min-width: 1025px) {
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+}
+
+html.lenis {
+  scroll-behavior: auto !important;
+  height: auto !important;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden !important;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none !important;
+}
+
 body {
   font-family: var(--font-primary);
   color: var(--color-dark);
@@ -148,7 +182,8 @@ button:focus-visible {
 }
 
 /* Header */
-.header {
+.header,
+.site-header {
   background-color: var(--color-white);
   height: 100px;
   display: flex;
@@ -157,6 +192,11 @@ button:focus-visible {
   top: 0;
   z-index: 100;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
 
 .header-container {
@@ -422,13 +462,87 @@ body.menu-open {
   transform: translateY(0);
 }
 
+/* Hero Entrance Animation (Desktop Only >= 761px) */
+@media (min-width: 761px) {
+  @keyframes heroFadeUp {
+    0% {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes heroScaleIn {
+    0% {
+      opacity: 0;
+      transform: scale(1.025);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .hero-animate-up {
+    opacity: 0;
+    animation: 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards heroFadeUp;
+  }
+
+  .hero-animate-scale {
+    opacity: 0;
+    animation: 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards heroScaleIn;
+  }
+
+  .hero-delay-80 {
+    animation-delay: 80ms;
+  }
+
+  .hero-delay-160 {
+    animation-delay: 160ms;
+  }
+
+  .hero-delay-240 {
+    animation-delay: 240ms;
+  }
+
+  .hero-delay-320 {
+    animation-delay: 320ms;
+  }
+}
+
+/* Reset explícito para Mobile (<= 760px): carregamento estático e instantâneo sem layout shift */
+@media (max-width: 760px) {
+  .hero-animate-up,
+  .hero-animate-scale,
+  .hero-delay-80,
+  .hero-delay-160,
+  .hero-delay-240,
+  .hero-delay-320,
+  .hero *,
+  .hero-content *,
+  .fade-in-hidden {
+    animation: none !important;
+    animation-delay: 0ms !important;
+    animation-duration: 0s !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .fade-in-hidden {
+  .fade-in-hidden,
+  .hero-animate-up,
+  .hero-animate-scale {
     transition: none !important;
+    animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }

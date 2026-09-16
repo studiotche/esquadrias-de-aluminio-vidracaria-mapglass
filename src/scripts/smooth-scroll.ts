@@ -1,10 +1,11 @@
 /**
  * Scroll suave com Lenis (@studio-freight/lenis@0.2.28).
- * Paridade com o projeto Pedro Zvir:
+ * Paridade com o plugin scroll-suave (bootstrap.js):
  * - Ativação apenas no desktop (viewport >= 1025px)
  * - Compensação do header fixo (HEADER_OFFSET = -100)
  * - Interceptação suave de âncoras (#...)
  * - Foco acessível no skip-link e seções
+ * - Injeção de CSS e classes lenis para anular scroll-behavior no Safari Desktop
  */
 import type Lenis from "@studio-freight/lenis";
 
@@ -12,8 +13,40 @@ const MIN_WIDTH = 1025;
 const HEADER_OFFSET = -100;
 const LENIS_DURATION = 1.2;
 
+interface WindowWithBootstrap extends Window {
+  __SSLenisLiteBootstrapped?: boolean;
+}
+
 function getViewportWidth(): number {
   return window.innerWidth || document.documentElement.clientWidth || 0;
+}
+
+function injectLenisCSS(): void {
+  if (typeof document === "undefined" || document.getElementById("sslenisl-css")) return;
+  const css = `
+html {
+  scroll-behavior: auto !important;
+}
+html.lenis {
+  height: auto !important;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden !important;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none !important;
+}
+`;
+  const style = document.createElement("style");
+  style.id = "sslenisl-css";
+  style.textContent = css;
+  document.head.appendChild(style);
 }
 
 function resolveTarget(hash: string): HTMLElement | null {
@@ -90,7 +123,13 @@ function scrollToHashOnLoad(lenis: Lenis): void {
 }
 
 async function initSmoothScroll(): Promise<void> {
+  const win = window as WindowWithBootstrap;
+  if (win.__SSLenisLiteBootstrapped) return;
+  win.__SSLenisLiteBootstrapped = true;
+
   if (getViewportWidth() < MIN_WIDTH) return;
+
+  injectLenisCSS();
 
   let lenis: Lenis;
   try {
@@ -106,6 +145,7 @@ async function initSmoothScroll(): Promise<void> {
       touchMultiplier: 2,
       infinite: false,
     });
+    document.documentElement.classList.add("lenis", "lenis-smooth");
   } catch {
     return;
   }
