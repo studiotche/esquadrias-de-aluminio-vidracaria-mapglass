@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { site, solutions, projects, trustItems, faqs } from "../data/site";
+import { site, solutions, projects, trustItems, faqs, testimonials } from "../data/site";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -32,7 +32,9 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
           <li><a href="#solucoes" class="nav-link">Soluções</a></li>
           <li><a href="#projetos" class="nav-link">Projetos</a></li>
           <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
           <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#localizacao" class="nav-link">Localização</a></li>
         </ul>
       </nav>
 
@@ -89,7 +91,9 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
         <a href="#solucoes">Soluções</a>
         <a href="#projetos">Projetos</a>
         <a href="#sobre">Sobre</a>
+        <a href="#depoimentos">Depoimentos</a>
         <a href="#faq">Dúvidas Frequentes</a>
+        <a href="#localizacao">Localização</a>
       </nav>
       <div class="menu-panel-footer">
         <a
@@ -298,6 +302,98 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
       </div>
     </section>
 
+    <!-- Testimonials Section (Google Reviews - Paridade Nutricionista Nádia) -->
+    <section id="depoimentos" class="testimonials-section" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="testimonial-heading">
+          <div>
+            <span class="eyebrow">AVALIAÇÕES NO GOOGLE</span>
+            <h2 id="testimonials-heading">
+              A confiança de quem<br />já transformou seu espaço.
+            </h2>
+          </div>
+          <div class="testimonial-heading-desc">
+            <p>
+              Relatos reais de clientes sobre o padrão de acabamento, pontualidade e excelência da MAP GLASS.
+            </p>
+            <a
+              class="google-rating"
+              href={site.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Avaliação ${site.googleRating.score} de 5 estrelas no Google Maps`}
+            >
+              <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="#4285F4"
+                  d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"
+                ></path>
+                <path
+                  fill="#34A853"
+                  d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"
+                ></path>
+                <path
+                  fill="#FBBC05"
+                  d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"
+                ></path>
+                <path
+                  fill="#EA4335"
+                  d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"
+                ></path>
+              </svg>
+              <strong>{site.googleRating.score}</strong>
+              <span class="google-stars" aria-hidden="true">
+                {
+                  [0, 1, 2, 3, 4].map(() => (
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
+                  ))
+                }
+              </span>
+              <small>{site.googleRating.reviews} avaliações no Google</small>
+            </a>
+          </div>
+        </div>
+
+        <div class="testimonial-grid">
+          {
+            testimonials.map((item) => (
+              <figure class="testimonial-card">
+                <div class="testimonial-topline">
+                  <svg class="google-mark" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"></path>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"></path>
+                    <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"></path>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"></path>
+                  </svg>
+                  <span class="testimonial-stars" role="img" aria-label="5 estrelas">
+                    {
+                      [0, 1, 2, 3, 4].map(() => (
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                        </svg>
+                      ))
+                    }
+                  </span>
+                </div>
+                <blockquote>"{item.text}"</blockquote>
+                <figcaption>
+                  <div class="testimonial-author">
+                    <strong>{item.name}</strong>
+                    <span>{item.city}</span>
+                    <a class="testimonial-source" href={site.googleMapsUrl} target="_blank" rel="noopener noreferrer">
+                      Avaliação verificada no Google
+                    </a>
+                  </div>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
     <!-- FAQ Section -->
     <section id="faq" class="faq-section" aria-labelledby="faq-heading">
       <div class="container">
@@ -373,6 +469,17 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
         </a>
       </div>
     </section>
+
+    <!-- Location Section (Google Maps Full Width - Paridade Lavanderia Ivoti) -->
+    <section class="location-section" id="localizacao" aria-label="Localização da MAP GLASS no Google Maps">
+      <iframe
+        src={site.mapsEmbedUrl}
+        loading="lazy"
+        title="Mapa da MAP GLASS no Google Maps"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -434,7 +541,9 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
             <li><a href="#solucoes">Soluções</a></li>
             <li><a href="#projetos">Projetos</a></li>
             <li><a href="#sobre">Sobre a MAP GLASS</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
             <li><a href="#faq">Dúvidas Frequentes</a></li>
+            <li><a href="#localizacao">Localização</a></li>
           </ul>
         </div>
 
@@ -501,4 +610,21 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
       <p id="modal-caption" class="modal-caption"></p>
     </div>
   </dialog>
+
+  <!-- Floating WhatsApp Button -->
+  <a
+    href={site.whatsappUrl}
+    class="floating-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Fale com a MAP GLASS pelo WhatsApp"
+  >
+    <img
+      src={asset(site.assets.whatsapp)}
+      alt="WhatsApp MAP GLASS"
+      width="60"
+      height="60"
+      loading="lazy"
+    />
+  </a>
 </BaseLayout>

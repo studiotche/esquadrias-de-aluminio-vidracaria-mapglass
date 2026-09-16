@@ -21,6 +21,14 @@ export interface TrustItem {
   description: string;
 }
 
+export interface TestimonialItem {
+  id: string;
+  name: string;
+  city: string;
+  text: string;
+  rating: number;
+}
+
 export const site = {
   name: "MAP GLASS",
   legalName: "MAP GLASS - Esquadrias de Alumínio & Vidraçaria",
@@ -55,7 +63,13 @@ export const site = {
     hero: "/assets/images/mapglass-hero.webp",
     about: "/assets/images/mapglass-sobre.webp",
     favicon: "/favicon.png",
+    whatsapp: "/assets/images/whatsapp.webp",
   },
+  googleRating: {
+    score: "5,0",
+    reviews: 28,
+  },
+  mapsEmbedUrl: "https://maps.google.com/maps?q=MAP+GLASS+-+Esquadrias+de+Alum%C3%ADnio+%26+Vidra%C3%A7aria,+Rua+Al%C3%ADcia+M%C3%BCler,+536+-+S%C3%A3o+Jos%C3%A9,+Novo+Hamburgo+-+RS&t=&z=16&ie=UTF8&iwloc=&output=embed",
 } as const;
 
 export const trustItems: readonly TrustItem[] = [
@@ -163,4 +177,29 @@ export const faqs: readonly FaqItem[] = [
     answer: "Oferecemos condições facilitadas: parcelamento em até 12x no cartão de crédito, faturamento facilitado via boleto bancário para empresas e construtoras (sujeito a análise), e desconto especial para pagamentos à vista via PIX.",
   },
 ] as const;
+
+export const testimonials: readonly TestimonialItem[] = [
+  {
+    id: "1",
+    name: "Cristiano Schuck",
+    city: "Novo Hamburgo / RS",
+    text: "Excelente atendimento e pontualidade na entrega. As esquadrias de alumínio ficaram perfeitas na nossa casa, acabamento impecável e equipe muito atenciosa durante a instalação.",
+    rating: 5,
+  },
+  {
+    id: "2",
+    name: "Mariana Steffen",
+    city: "São Leopoldo / RS",
+    text: "Fizemos o fechamento da sacada e os boxes de vidro com a MAP GLASS. O resultado superou as expectativas, material de altíssima qualidade e acabamento limpo. Super recomendo!",
+    rating: 5,
+  },
+  {
+    id: "3",
+    name: "Rodrigo Klein",
+    city: "Estância Velha / RS",
+    text: "Profissionais extremamente qualificados. Desde a medição técnica até a instalação das portas de correr, tudo foi cumprido no prazo combinado. Nota 10!",
+    rating: 5,
+  },
+] as const;
+
 
