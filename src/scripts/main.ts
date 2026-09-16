@@ -1,42 +1,140 @@
 import "./smooth-scroll";
 
 export function initializeSite(): void {
-  // Mobile Menu
-  const menuToggle = document.querySelector<HTMLButtonElement>('.mobile-menu-toggle');
-  const header = document.querySelector<HTMLElement>('.header');
-  const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+  // Mobile Menu Drawer
+  const hamburger = document.getElementById('hamburgerBtn') as HTMLButtonElement | null;
+  const menu = document.getElementById('mobileMenu') as HTMLElement | null;
 
-  if (menuToggle && header) {
-    menuToggle.addEventListener('click', () => {
-      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!isExpanded));
-      header.classList.toggle('menu-open');
+  if (hamburger && menu) {
+    const closeMenu = (): void => {
+      menu.classList.remove('open');
+      menu.setAttribute('aria-hidden', 'true');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+      hamburger.focus();
+    };
 
-      const icon = menuToggle.querySelector<HTMLElement>('i');
-      if (icon) {
-        if (header.classList.contains('menu-open')) {
-          icon.classList.remove('ph-list');
-          icon.classList.add('ph-x');
-        } else {
-          icon.classList.remove('ph-x');
-          icon.classList.add('ph-list');
-        }
+    const openMenu = (): void => {
+      menu.classList.add('open');
+      menu.setAttribute('aria-hidden', 'false');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('menu-open');
+    };
+
+    hamburger.addEventListener('click', () => {
+      if (menu.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
       }
     });
 
-    // Close menu when clicking a link
-    navLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        header.classList.remove('menu-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        const icon = menuToggle.querySelector<HTMLElement>('i');
-        if (icon) {
-          icon.classList.remove('ph-x');
-          icon.classList.add('ph-list');
-        }
-      });
+    menu.querySelectorAll<HTMLElement>('[data-close-menu]').forEach((el) => {
+      el.addEventListener('click', closeMenu);
+    });
+
+    menu.querySelectorAll<HTMLAnchorElement>('.mobile-nav a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && menu.classList.contains('open')) {
+        closeMenu();
+      }
     });
   }
+
+  // FAQ Smooth Accordion
+  const faqItems = document.querySelectorAll<HTMLDetailsElement>('.faq-list details');
+  const faqTimeouts = new WeakMap<HTMLDetailsElement, number>();
+  const FAQ_DURATION = 430;
+
+  const clearFaqTimeout = (details: HTMLDetailsElement): void => {
+    const timeout = faqTimeouts.get(details);
+    if (timeout !== undefined) window.clearTimeout(timeout);
+  };
+
+  const finishOpenFaq = (details: HTMLDetailsElement, answer: HTMLElement): void => {
+    clearFaqTimeout(details);
+    faqTimeouts.set(
+      details,
+      window.setTimeout(() => {
+        if (details.open && !details.classList.contains('is-closing')) {
+          answer.style.height = 'auto';
+        }
+      }, FAQ_DURATION)
+    );
+  };
+
+  const animatedCloseFaq = (details: HTMLDetailsElement): void => {
+    const answer = details.querySelector<HTMLElement>('.faq-answer');
+    if (!details.open || !answer || details.classList.contains('is-closing')) return;
+    details.classList.add('is-closing');
+    answer.style.height = `${answer.offsetHeight}px`;
+    answer.style.opacity = '1';
+    void answer.offsetHeight;
+    answer.style.height = '0px';
+    answer.style.opacity = '0';
+    clearFaqTimeout(details);
+    faqTimeouts.set(
+      details,
+      window.setTimeout(() => {
+        details.removeAttribute('open');
+        details.classList.remove('is-closing');
+        answer.style.height = '';
+        answer.style.opacity = '';
+      }, FAQ_DURATION)
+    );
+  };
+
+  const animatedOpenFaq = (details: HTMLDetailsElement): void => {
+    const answer = details.querySelector<HTMLElement>('.faq-answer');
+    if (!answer || details.open) return;
+    details.classList.remove('is-closing');
+    details.setAttribute('open', '');
+    answer.style.height = '0px';
+    answer.style.opacity = '0';
+    void answer.offsetHeight;
+    answer.style.height = `${answer.scrollHeight}px`;
+    answer.style.opacity = '1';
+    finishOpenFaq(details, answer);
+  };
+
+  faqItems.forEach((details) => {
+    const summary = details.querySelector('summary');
+    if (!summary) return;
+
+    if (details.open) {
+      const answer = details.querySelector<HTMLElement>('.faq-answer');
+      if (answer) {
+        answer.style.height = 'auto';
+        answer.style.opacity = '1';
+      }
+    }
+
+    summary.addEventListener('click', (event: MouseEvent) => {
+      event.preventDefault();
+      if (details.classList.contains('is-closing')) {
+        clearFaqTimeout(details);
+        details.classList.remove('is-closing');
+        const answer = details.querySelector<HTMLElement>('.faq-answer');
+        if (answer) {
+          answer.style.height = `${answer.scrollHeight}px`;
+          answer.style.opacity = '1';
+          finishOpenFaq(details, answer);
+        }
+        return;
+      }
+      if (details.open) {
+        animatedCloseFaq(details);
+      } else {
+        faqItems.forEach((other) => {
+          if (other !== details && other.open) animatedCloseFaq(other);
+        });
+        animatedOpenFaq(details);
+      }
+    });
+  });
 
   // Lightbox Modal
   const modal = document.getElementById('image-modal') as HTMLDialogElement | null;

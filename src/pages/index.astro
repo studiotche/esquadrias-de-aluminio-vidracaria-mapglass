@@ -48,15 +48,66 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
       </a>
 
       <button
-        class="mobile-menu-toggle"
-        aria-label="Abrir menu de navegação"
-        aria-expanded="false"
+        class="hamburger"
+        id="hamburgerBtn"
         type="button"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        aria-label="Abrir menu de navegação"
       >
-        <i class="ph ph-list" aria-hidden="true"></i>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   </header>
+
+  <!-- Mobile Menu Drawer (Smooth Slide from Right) -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-backdrop" data-close-menu></div>
+    <div class="mobile-menu-panel">
+      <button
+        class="menu-close"
+        type="button"
+        data-close-menu
+        aria-label="Fechar menu"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="menu-panel-head">
+        <img
+          src={asset(site.assets.logo)}
+          alt="MAP GLASS - Esquadrias de Alumínio & Vidraçaria"
+          class="menu-logo"
+          width="150"
+          height="46"
+        />
+        <small class="menu-subtitle">Esquadrias & Vidraçaria Sob Medida</small>
+      </div>
+      <nav class="mobile-nav" aria-label="Navegação móvel">
+        <a href="#inicio">Início</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#faq">Dúvidas Frequentes</a>
+      </nav>
+      <div class="menu-panel-footer">
+        <a
+          class="btn btn-secondary menu-cta"
+          href={site.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+          <span>Solicitar orçamento</span>
+        </a>
+        <div class="menu-contact-info">
+          <p><i class="ph ph-map-pin" aria-hidden="true"></i> Novo Hamburgo / RS</p>
+          <p><i class="ph ph-phone" aria-hidden="true"></i> (51) 99540-6595</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main>
     <!-- Hero Section -->
