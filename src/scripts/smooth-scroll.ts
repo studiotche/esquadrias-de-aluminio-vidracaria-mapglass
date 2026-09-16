@@ -1,23 +1,15 @@
 /**
- * Scroll suave (Lenis) — adaptação do plugin WordPress "Scroll Suave"
- * para o site Astro.
- *
- * Paridade exata com o plugin (assets/js/bootstrap.js):
- * - mesma lib: @studio-freight/lenis@0.2.28
- * - mesmas opções de init
- * - só ativa no desktop (viewport >= 1025px)
- * - âncoras (#...) roladas via lenis.scrollTo + pushState do hash
- * - scroll do hash ao carregar a página (30ms)
- *
- * Únicas diferenças intencionais:
- * - offset -88 nas âncoras (compensa o header fixo de 88px)
- * - foco movido junto no skip-link "#conteudo" (acessibilidade)
- * - chunk separado: o mobile nem baixa a lib
+ * Scroll suave com Lenis (@studio-freight/lenis@0.2.28).
+ * Paridade com o projeto Pedro Zvir:
+ * - Ativação apenas no desktop (viewport >= 1025px)
+ * - Compensação do header fixo (HEADER_OFFSET = -100)
+ * - Interceptação suave de âncoras (#...)
+ * - Foco acessível no skip-link e seções
  */
 import type Lenis from "@studio-freight/lenis";
 
 const MIN_WIDTH = 1025;
-const HEADER_OFFSET = -88; // compensa o header fixo (scroll-padding-top)
+const HEADER_OFFSET = -100;
 const LENIS_DURATION = 1.2;
 
 function getViewportWidth(): number {
@@ -29,7 +21,7 @@ function resolveTarget(hash: string): HTMLElement | null {
   try {
     target = document.querySelector<HTMLElement>(hash);
   } catch {
-    // hash inválido como seletor — tenta por id abaixo
+    // seletor inválido
   }
   if (!target && hash.length > 1) {
     target = document.getElementById(hash.slice(1));
@@ -75,8 +67,7 @@ function wireAnchors(lenis: Lenis): void {
         location.hash = hash;
       }
 
-      // acessibilidade: leva o foco junto no skip-link
-      if (hash === "#conteudo" && !target.hasAttribute("tabindex")) {
+      if ((hash === "#inicio" || hash === "#conteudo") && !target.hasAttribute("tabindex")) {
         target.setAttribute("tabindex", "-1");
         target.focus({ preventScroll: true });
       }
@@ -104,7 +95,6 @@ async function initSmoothScroll(): Promise<void> {
   let lenis: Lenis;
   try {
     const { default: LenisCtor } = await import("@studio-freight/lenis");
-    // opções idênticas às do plugin
     lenis = new LenisCtor({
       duration: LENIS_DURATION,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -117,7 +107,6 @@ async function initSmoothScroll(): Promise<void> {
       infinite: false,
     });
   } catch {
-    // se o Lenis falhar, o CSS nativo (scroll-behavior) assume
     return;
   }
 
@@ -125,7 +114,7 @@ async function initSmoothScroll(): Promise<void> {
     try {
       lenis.raf(time);
     } catch {
-      // ignora erro isolado de frame
+      // ignora erro isolado
     }
     requestAnimationFrame(raf);
   }

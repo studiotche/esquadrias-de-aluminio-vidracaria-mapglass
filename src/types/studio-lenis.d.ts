@@ -1,7 +1,5 @@
 /**
  * Tipos locais para @studio-freight/lenis@0.2.28.
- * O package.json da lib não expõe os tipos via "exports",
- * então redeclaramos aqui a partir de dist/lenis.d.ts.
  */
 declare module "@studio-freight/lenis" {
   export default class Lenis {

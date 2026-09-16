@@ -1,3 +1,5 @@
+import "./smooth-scroll";
+
 export function initializeSite(): void {
   // Mobile Menu
   const menuToggle = document.querySelector<HTMLButtonElement>('.mobile-menu-toggle');

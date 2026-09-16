@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { site, solutions, projects, trustItems } from "../data/site";
+import { site, solutions, projects, trustItems, faqs } from "../data/site";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -32,6 +32,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
           <li><a href="#solucoes" class="nav-link">Soluções</a></li>
           <li><a href="#projetos" class="nav-link">Projetos</a></li>
           <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
         </ul>
       </nav>
 
@@ -246,6 +247,59 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
       </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="faq-grid">
+          <div class="faq-header">
+            <span class="eyebrow">DÚVIDAS FREQUENTES</span>
+            <h2 id="faq-heading">
+              Tudo o que você precisa saber antes de iniciar seu projeto.
+            </h2>
+            <p class="faq-intro">
+              Transparência, suporte técnico e segurança para transformar sua residência ou empresa com excelência.
+            </p>
+            <div class="faq-cta-box">
+              <div class="faq-cta-header">
+                <div class="faq-cta-icon" aria-hidden="true">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="faq-cta-text">
+                  <strong>Ficou com alguma dúvida específica?</strong>
+                  <p>Nossa equipe técnica atende você prontamente.</p>
+                </div>
+              </div>
+              <a
+                href={site.whatsappUrl}
+                class="btn btn-secondary faq-cta-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>Falar com especialista</span>
+                <i class="ph ph-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="faq-list">
+            {
+              faqs.map((faq, index) => (
+                <details class="faq-item" open={index === 0}>
+                  <summary class="faq-summary">
+                    <span class="faq-question-text">{faq.question}</span>
+                    <span class="faq-toggle" aria-hidden="true" />
+                  </summary>
+                  <div class="faq-answer">
+                    <p>{faq.answer}</p>
+                  </div>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section" aria-labelledby="cta-heading">
       <div class="container cta-container">
@@ -329,6 +383,7 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
             <li><a href="#solucoes">Soluções</a></li>
             <li><a href="#projetos">Projetos</a></li>
             <li><a href="#sobre">Sobre a MAP GLASS</a></li>
+            <li><a href="#faq">Dúvidas Frequentes</a></li>
           </ul>
         </div>
 
