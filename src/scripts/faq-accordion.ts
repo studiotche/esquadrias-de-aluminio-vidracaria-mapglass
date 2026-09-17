@@ -1,6 +1,6 @@
 const faqItems = document.querySelectorAll<HTMLDetailsElement>(".faq-list details");
 const faqTimeouts = new WeakMap<HTMLDetailsElement, number>();
-const FAQ_DURATION = 430;
+const FAQ_DURATION = 400;
 
 const getAnswer = (details: HTMLDetailsElement) => {
   const existing = details.querySelector<HTMLElement>(".faq-answer");

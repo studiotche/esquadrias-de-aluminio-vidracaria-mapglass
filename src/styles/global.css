@@ -1173,13 +1173,15 @@ body.menu-open {
 
 .faq-item[open].is-closing .faq-toggle {
   transform: rotate(0deg);
+  border-color: rgba(25, 35, 33, 0.15);
+  background-color: var(--color-white);
 }
 
 .faq-answer {
   overflow: hidden;
   opacity: 1;
-  padding: 0 16px 24px;
-  transition: height 0.42s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.32s ease;
+  padding: 0;
+  transition: height 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.32s ease;
 }
 
 .faq-answer p {
@@ -1188,6 +1190,7 @@ body.menu-open {
   color: var(--color-text-secondary);
   max-width: 680px;
   margin: 0;
+  padding: 0 16px 24px;
 }
 
 /* CTA Section */
@@ -1440,15 +1443,18 @@ body.menu-open {
 }
 
 .privacy-link,
+.terms-link,
 .back-to-top {
   color: rgba(255, 255, 255, 0.75);
   transition: color var(--transition-fast);
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  text-decoration: none;
 }
 
 .privacy-link:hover,
+.terms-link:hover,
 .back-to-top:hover {
   color: var(--color-white);
 }

@@ -44,97 +44,91 @@ export function initializeSite(): void {
     });
   }
 
-  // FAQ Smooth Accordion
+  // FAQ Smooth Accordion (Exact parity with Instalacao-ar-condicionado-am-climatizar)
   const faqItems = document.querySelectorAll<HTMLDetailsElement>('.faq-list details');
-  const faqTimeouts = new WeakMap<HTMLDetailsElement, number>();
-  const FAQ_DURATION = 430;
+  if (faqItems.length) {
+    const faqTimeouts = new WeakMap<HTMLDetailsElement, number>();
+    const FAQ_DURATION = 400;
 
-  const clearFaqTimeout = (details: HTMLDetailsElement): void => {
-    const timeout = faqTimeouts.get(details);
-    if (timeout !== undefined) window.clearTimeout(timeout);
-  };
+    const clearFaqTimeout = (details: HTMLDetailsElement): void => {
+      const timeout = faqTimeouts.get(details);
+      if (timeout !== undefined) window.clearTimeout(timeout);
+    };
 
-  const finishOpenFaq = (details: HTMLDetailsElement, answer: HTMLElement): void => {
-    clearFaqTimeout(details);
-    faqTimeouts.set(
-      details,
-      window.setTimeout(() => {
-        if (details.open && !details.classList.contains('is-closing')) {
-          answer.style.height = 'auto';
-        }
-      }, FAQ_DURATION)
-    );
-  };
+    const finishOpenFaq = (details: HTMLDetailsElement, answer: HTMLElement): void => {
+      clearFaqTimeout(details);
+      faqTimeouts.set(
+        details,
+        window.setTimeout(() => {
+          if (details.open && !details.classList.contains('is-closing')) {
+            answer.style.height = 'auto';
+          }
+        }, FAQ_DURATION)
+      );
+    };
 
-  const animatedCloseFaq = (details: HTMLDetailsElement): void => {
-    const answer = details.querySelector<HTMLElement>('.faq-answer');
-    if (!details.open || !answer || details.classList.contains('is-closing')) return;
-    details.classList.add('is-closing');
-    answer.style.height = `${answer.offsetHeight}px`;
-    answer.style.opacity = '1';
-    void answer.offsetHeight;
-    answer.style.height = '0px';
-    answer.style.opacity = '0';
-    clearFaqTimeout(details);
-    faqTimeouts.set(
-      details,
-      window.setTimeout(() => {
-        details.removeAttribute('open');
-        details.classList.remove('is-closing');
-        answer.style.height = '';
-        answer.style.opacity = '';
-      }, FAQ_DURATION)
-    );
-  };
-
-  const animatedOpenFaq = (details: HTMLDetailsElement): void => {
-    const answer = details.querySelector<HTMLElement>('.faq-answer');
-    if (!answer || details.open) return;
-    details.classList.remove('is-closing');
-    details.setAttribute('open', '');
-    answer.style.height = '0px';
-    answer.style.opacity = '0';
-    void answer.offsetHeight;
-    answer.style.height = `${answer.scrollHeight}px`;
-    answer.style.opacity = '1';
-    finishOpenFaq(details, answer);
-  };
-
-  faqItems.forEach((details) => {
-    const summary = details.querySelector('summary');
-    if (!summary) return;
-
-    if (details.open) {
+    const animatedCloseFaq = (details: HTMLDetailsElement): void => {
       const answer = details.querySelector<HTMLElement>('.faq-answer');
-      if (answer) {
-        answer.style.height = 'auto';
-        answer.style.opacity = '1';
-      }
-    }
+      if (!details.open || !answer || details.classList.contains('is-closing')) return;
+      details.classList.add('is-closing');
+      answer.style.height = `${answer.offsetHeight}px`;
+      answer.style.opacity = '1';
+      void answer.offsetHeight;
+      answer.style.height = '0px';
+      answer.style.opacity = '0';
+      clearFaqTimeout(details);
+      faqTimeouts.set(
+        details,
+        window.setTimeout(() => {
+          details.removeAttribute('open');
+          details.classList.remove('is-closing');
+          answer.style.height = '';
+          answer.style.opacity = '';
+        }, FAQ_DURATION)
+      );
+    };
 
-    summary.addEventListener('click', (event: MouseEvent) => {
-      event.preventDefault();
-      if (details.classList.contains('is-closing')) {
-        clearFaqTimeout(details);
-        details.classList.remove('is-closing');
-        const answer = details.querySelector<HTMLElement>('.faq-answer');
-        if (answer) {
-          answer.style.height = `${answer.scrollHeight}px`;
-          answer.style.opacity = '1';
-          finishOpenFaq(details, answer);
+    const animatedOpenFaq = (details: HTMLDetailsElement): void => {
+      const answer = details.querySelector<HTMLElement>('.faq-answer');
+      if (!answer || details.open) return;
+      details.classList.remove('is-closing');
+      details.setAttribute('open', '');
+      answer.style.height = '0px';
+      answer.style.opacity = '0';
+      void answer.offsetHeight;
+      answer.style.height = `${answer.scrollHeight}px`;
+      answer.style.opacity = '1';
+      finishOpenFaq(details, answer);
+    };
+
+    faqItems.forEach((details) => {
+      const summary = details.querySelector('summary');
+      if (!summary) return;
+
+      summary.addEventListener('click', (event: MouseEvent) => {
+        event.preventDefault();
+        if (details.classList.contains('is-closing')) {
+          clearFaqTimeout(details);
+          details.classList.remove('is-closing');
+          const answer = details.querySelector<HTMLElement>('.faq-answer');
+          if (answer) {
+            answer.style.height = `${answer.scrollHeight}px`;
+            answer.style.opacity = '1';
+            finishOpenFaq(details, answer);
+          }
+          return;
         }
-        return;
-      }
-      if (details.open) {
-        animatedCloseFaq(details);
-      } else {
-        faqItems.forEach((other) => {
-          if (other !== details && other.open) animatedCloseFaq(other);
-        });
-        animatedOpenFaq(details);
-      }
+        if (details.open) {
+          animatedCloseFaq(details);
+        } else {
+          faqItems.forEach((other) => {
+            if (other !== details && other.open) animatedCloseFaq(other);
+          });
+          animatedOpenFaq(details);
+        }
+      });
     });
-  });
+  }
 
   // Lightbox Modal
   const modal = document.getElementById('image-modal') as HTMLDialogElement | null;
