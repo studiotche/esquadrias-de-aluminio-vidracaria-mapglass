@@ -602,7 +602,7 @@ body.menu-open {
 }
 
 .hero-content {
-  max-width: 680px;
+  max-width: 760px;
   color: var(--color-white);
 }
 
@@ -622,14 +622,16 @@ body.menu-open {
   line-height: 1.12;
   margin-bottom: 24px;
   letter-spacing: -1px;
+  text-wrap: balance;
 }
 
 .hero-content p {
   font-size: 1.125rem;
   margin-bottom: 40px;
   color: rgba(255, 255, 255, 0.92);
-  max-width: 500px;
+  max-width: 540px;
   line-height: 1.6;
+  text-wrap: balance;
 }
 
 .hero-actions {
