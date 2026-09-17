@@ -191,7 +191,7 @@ button:focus-visible {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--color-border);
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   transform: translateZ(0);
@@ -308,7 +308,7 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  box-shadow: -24px 0 60px rgba(25, 35, 33, 0.25);
+  border-left: 1px solid var(--color-border);
   padding: 28px 26px 36px;
   transform: translateX(100%);
   transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -722,7 +722,7 @@ body.menu-open {
 
 /* Solutions Section */
 .solutions {
-  padding: 56px 0;
+  padding: 80px 0;
   background-color: var(--color-white);
 }
 
@@ -820,7 +820,7 @@ body.menu-open {
 /* Projects */
 .projects {
   background-color: var(--color-dark);
-  padding: 56px 0;
+  padding: 80px 0;
   color: var(--color-white);
 }
 
@@ -918,13 +918,12 @@ body.menu-open {
   color: var(--color-white);
   font-weight: 500;
   font-size: 1rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* About Section */
 .about {
   background-color: var(--color-white);
-  padding: 56px 0;
+  padding: 80px 0;
 }
 
 .about-container {
@@ -988,9 +987,10 @@ body.menu-open {
 
 /* FAQ Section */
 .faq-section {
-  background-color: #F8FAFA;
-  padding: 88px 0;
-  border-top: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  padding: 80px 0;
+  border-top: none;
+  border-bottom: none;
 }
 
 .faq-grid {
@@ -1035,7 +1035,6 @@ body.menu-open {
   border-left: 4px solid var(--color-cyan);
   border-radius: 8px;
   padding: 24px;
-  box-shadow: 0 4px 16px rgba(25, 35, 33, 0.04);
 }
 
 .faq-cta-header {
@@ -1194,7 +1193,7 @@ body.menu-open {
 /* CTA Section */
 .cta-section {
   background-color: var(--color-green);
-  padding: 32px 0;
+  padding: 80px 0;
 }
 
 .cta-container {
@@ -1539,9 +1538,9 @@ body.menu-open {
    ========================================================================== */
 .testimonials-section {
   padding: 80px 0;
-  background-color: #F8F9FA;
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  border-top: none;
+  border-bottom: none;
 }
 
 .testimonial-heading {
@@ -1582,16 +1581,14 @@ body.menu-open {
   border: 1px solid var(--color-border);
   border-radius: 6px;
   background: var(--color-white);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  transition: border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
   text-decoration: none;
   color: var(--color-dark);
 }
 
 .google-rating:hover {
-  border-color: rgba(25, 182, 215, 0.5);
+  border-color: var(--color-cyan);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .google-rating .google-g {
@@ -1625,12 +1622,12 @@ body.menu-open {
 
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
 .testimonial-card {
-  min-height: 280px;
+  min-height: 240px;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -1638,14 +1635,12 @@ body.menu-open {
   background: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .testimonial-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  border-color: rgba(25, 182, 215, 0.4);
+  border-color: var(--color-cyan);
 }
 
 .testimonial-topline {
@@ -1741,19 +1736,17 @@ body.menu-open {
   z-index: 99 !important;
   right: 24px !important;
   bottom: calc(24px + env(safe-area-inset-bottom, 0px)) !important;
-  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.3s ease !important;
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) !important;
   will-change: transform !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   border-radius: 50% !important;
-  filter: drop-shadow(0 4px 14px rgba(37, 211, 102, 0.5)) !important;
   text-decoration: none !important;
 }
 
 .floating-whatsapp:hover {
   transform: translateY(-4px) scale(1.06) !important;
-  filter: drop-shadow(0 8px 22px rgba(37, 211, 102, 0.75)) !important;
 }
 
 .floating-whatsapp:active {
@@ -2009,8 +2002,13 @@ body.menu-open {
     display: none;
   }
 
-  .faq-section {
-    padding: 56px 0;
+  .solutions,
+  .projects,
+  .about,
+  .testimonials-section,
+  .faq-section,
+  .cta-section {
+    padding: 60px 0;
   }
 
   .faq-summary {
