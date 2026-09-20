@@ -603,7 +603,9 @@ body.menu-open {
   z-index: -1;
 }
 
+.hero-bg picture,
 .hero-bg img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1963,12 +1965,24 @@ body.menu-open {
 
 @media (max-width: 768px) {
   .hero {
-    min-height: clamp(560px, 80vh, 720px);
+    min-height: clamp(620px, 90vh, 820px);
+    align-items: flex-end;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(25, 35, 33, 0.25) 0%,
+      rgba(25, 35, 33, 0.65) 45%,
+      rgba(25, 35, 33, 0.94) 85%,
+      rgba(25, 35, 33, 0.98) 100%
+    );
   }
 
   .hero-container {
-    padding-top: 64px;
-    padding-bottom: 72px;
+    justify-content: flex-end;
+    padding-top: clamp(140px, 28vh, 260px);
+    padding-bottom: clamp(48px, 8vh, 72px);
   }
 
   .testimonial-grid {
@@ -1988,18 +2002,26 @@ body.menu-open {
   }
 
   .hero h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 6.5vw, 2.6rem);
+    line-height: 1.18;
+    margin-bottom: 16px;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 28px;
+    line-height: 1.55;
   }
 
   .hero-actions {
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
+    gap: 20px;
   }
 
   .hero-caption {
     position: static;
-    margin-top: 40px;
+    margin-top: 32px;
   }
 
   .trust-container {

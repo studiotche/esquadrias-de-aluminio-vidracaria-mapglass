@@ -115,13 +115,16 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
     <!-- Hero Section -->
     <section id="inicio" class="hero" aria-labelledby="hero-heading">
       <div class="hero-bg">
-        <img
-          src={asset(site.assets.hero)}
-          alt="Fachada moderna de alto padrão com esquadrias em alumínio e grandes painéis em vidro"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcset={asset(site.assets.heroMobile)} />
+          <img
+            src={asset(site.assets.hero)}
+            alt="Fachada moderna de alto padrão com esquadrias em alumínio e grandes painéis em vidro"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <div class="hero-overlay" aria-hidden="true"></div>
       </div>
       <div class="container hero-container">
