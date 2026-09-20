@@ -58,11 +58,11 @@ export const site = {
     ogImage: "/assets/images/mapglass-hero.webp",
   },
   assets: {
-    logo: "/assets/images/mapglass-logo-dark.png",
-    logoWhite: "/assets/images/mapglass-logo-white.png",
+    logo: "/assets/images/logo-esquadrias-vidrcaria-mapglass.webp",
+    logoWhite: "/assets/images/logo-esquadrias-vidrcaria-mapglass.webp",
     hero: "/assets/images/mapglass-hero.webp",
     about: "/assets/images/mapglass-sobre.webp",
-    favicon: "/favicon.png",
+    favicon: "/assets/images/favicon-esquadrias-vidracaria-map-glass.webp",
     whatsapp: "/assets/images/whatsapp.webp",
   },
   googleRating: {

@@ -206,14 +206,14 @@ button:focus-visible {
 /* Header */
 .header,
 .site-header {
-  background-color: var(--color-white);
+  background-color: var(--color-dark);
   height: 100px;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   transform: translateZ(0);
@@ -251,18 +251,27 @@ button:focus-visible {
 .nav-link {
   font-size: 1rem;
   font-weight: 400;
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.85);
   transition: color var(--transition-fast);
   padding: 4px 0;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--color-dark);
+  color: var(--color-white);
 }
 
 .nav-link.active {
-  border-bottom: 2px solid var(--color-green);
+  border-bottom: 2px solid var(--color-cyan);
+}
+
+.header-btn {
+  background-color: var(--color-cyan) !important;
+  color: var(--color-dark) !important;
+}
+
+.header-btn:hover {
+  background-color: var(--color-cyan-hover) !important;
 }
 
 /* Hamburger Button */
@@ -274,17 +283,17 @@ button:focus-visible {
   justify-content: center;
   flex-direction: column;
   gap: 5px;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.06);
   cursor: pointer;
   padding: 0;
   transition: background-color var(--transition-fast), border-color var(--transition-fast), transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .hamburger:hover {
-  background-color: rgba(25, 182, 215, 0.08);
-  border-color: var(--color-green);
+  background-color: rgba(25, 182, 215, 0.16);
+  border-color: var(--color-cyan);
 }
 
 .hamburger:active {
@@ -297,7 +306,7 @@ button:focus-visible {
   width: 20px;
   height: 2px;
   border-radius: 2px;
-  background-color: var(--color-dark);
+  background-color: var(--color-white);
   transition: background-color var(--transition-fast);
 }
 
@@ -383,8 +392,9 @@ body.menu-open {
   flex-direction: column;
   gap: 6px;
   margin: 4px 0 28px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--color-border);
+  padding: 16px 18px;
+  border-radius: 8px;
+  background-color: var(--color-dark);
 }
 
 .menu-logo {
