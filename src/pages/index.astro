@@ -67,45 +67,48 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="mobile-menu-backdrop" data-close-menu></div>
     <div class="mobile-menu-panel">
-      <button
-        class="menu-close"
-        type="button"
-        data-close-menu
-        aria-label="Fechar menu"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <div class="menu-panel-head">
-        <img
-          src={asset(site.assets.logo)}
-          alt="MAP GLASS - Esquadrias de Alumínio & Vidraçaria"
-          class="menu-logo"
-          width="150"
-          height="46"
-        />
-        <small class="menu-subtitle">Esquadrias & Vidraçaria Sob Medida</small>
-      </div>
-      <nav class="mobile-nav" aria-label="Navegação móvel">
-        <a href="#solucoes">Soluções</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#faq">Dúvidas Frequentes</a>
-        <a href="#localizacao">Localização</a>
-      </nav>
-      <div class="menu-panel-footer">
-        <a
-          class="btn btn-secondary menu-cta"
-          href={site.whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-          <span>Solicitar orçamento</span>
+      <div class="mobile-menu-header">
+        <a href="#inicio" class="logo-link" data-close-menu aria-label="MAP GLASS - Início">
+          <img
+            src={asset(site.assets.logo)}
+            alt="MAP GLASS - Esquadrias de Alumínio & Vidraçaria"
+            class="logo"
+            width="180"
+            height="56"
+          />
         </a>
-        <div class="menu-contact-info">
-          <p><i class="ph ph-map-pin" aria-hidden="true"></i> Novo Hamburgo / RS</p>
-          <p><i class="ph ph-phone" aria-hidden="true"></i> (51) 99540-6595</p>
+        <button
+          class="menu-close"
+          type="button"
+          data-close-menu
+          aria-label="Fechar menu"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="mobile-menu-content">
+        <nav class="mobile-nav" aria-label="Navegação móvel">
+          <a href="#solucoes">Soluções</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#depoimentos">Depoimentos</a>
+          <a href="#faq">Dúvidas Frequentes</a>
+          <a href="#localizacao">Localização</a>
+        </nav>
+        <div class="menu-panel-footer">
+          <a
+            class="btn btn-secondary menu-cta"
+            href={site.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            <span>Solicitar orçamento</span>
+          </a>
+          <div class="menu-contact-info">
+            <p><i class="ph ph-map-pin" aria-hidden="true"></i> Novo Hamburgo / RS</p>
+            <p><i class="ph ph-phone" aria-hidden="true"></i> (51) 99540-6595</p>
+          </div>
         </div>
       </div>
     </div>
