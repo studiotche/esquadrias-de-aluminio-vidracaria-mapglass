@@ -28,7 +28,6 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
 
       <nav class="main-nav" aria-label="Navegação principal">
         <ul class="nav-list">
-          <li><a href="#inicio" class="nav-link active">Início</a></li>
           <li><a href="#solucoes" class="nav-link">Soluções</a></li>
           <li><a href="#projetos" class="nav-link">Projetos</a></li>
           <li><a href="#sobre" class="nav-link">Sobre</a></li>
@@ -87,7 +86,6 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
         <small class="menu-subtitle">Esquadrias & Vidraçaria Sob Medida</small>
       </div>
       <nav class="mobile-nav" aria-label="Navegação móvel">
-        <a href="#inicio">Início</a>
         <a href="#solucoes">Soluções</a>
         <a href="#projetos">Projetos</a>
         <a href="#sobre">Sobre</a>
@@ -488,15 +486,17 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
       <div class="footer-grid">
         <!-- Coluna 1: Marca -->
         <div class="footer-brand">
-          <img
-            src={asset(site.assets.logoWhite)}
-            alt="MAP GLASS - Esquadrias de Alumínio & Vidraçaria"
-            class="footer-logo"
-            loading="lazy"
-            decoding="async"
-            width="180"
-            height="72"
-          />
+          <a href="#inicio" class="footer-logo-link" aria-label="MAP GLASS - Ir para o início">
+            <img
+              src={asset(site.assets.logoWhite)}
+              alt="MAP GLASS - Esquadrias de Alumínio & Vidraçaria"
+              class="footer-logo"
+              loading="lazy"
+              decoding="async"
+              width="180"
+              height="72"
+            />
+          </a>
           <p class="footer-desc">
             Esquadrias sob medida e vidraçaria de alto padrão.<br />Qualidade, elegância e modernidade no Vale dos Sinos.
           </p>
@@ -529,7 +529,6 @@ const asset = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
         <div class="footer-nav">
           <h3 class="footer-title">NAVEGUE</h3>
           <ul class="footer-links">
-            <li><a href="#inicio">Início</a></li>
             <li><a href="#solucoes">Soluções</a></li>
             <li><a href="#projetos">Projetos</a></li>
             <li><a href="#sobre">Sobre a MAP GLASS</a></li>

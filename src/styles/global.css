@@ -1277,6 +1277,16 @@ body.menu-open {
   width: 100%;
 }
 
+.footer-logo-link {
+  display: inline-block;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-logo-link:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
 .footer-logo {
   height: 72px;
   width: auto;
