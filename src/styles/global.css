@@ -649,6 +649,10 @@ body.menu-open {
   text-wrap: balance;
 }
 
+.hero-highlight {
+  color: var(--color-cyan);
+}
+
 .hero-content p {
   font-size: 1.125rem;
   margin-bottom: 40px;
