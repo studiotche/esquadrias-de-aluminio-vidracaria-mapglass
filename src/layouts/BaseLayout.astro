@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import manropeWoff2 from "../assets/fonts/manrope.woff2";
 import { site, faqs } from "../data/site";
 
 interface Props {
@@ -69,14 +68,25 @@ const faqSchema = {
     <!-- Favicon -->
     <link rel="icon" type="image/png" href={asset(site.assets.favicon)} />
 
-    <!-- Local Fonts: Manrope (Preload woff2) -->
+    <!-- Local Fonts: Manrope -->
     <link
       rel="preload"
-      href={manropeWoff2}
+      href={asset("assets/fonts/manrope.woff2")}
       as="font"
       type="font/woff2"
       crossorigin
     />
+    <style is:inline set:html={`
+      @font-face {
+        font-family: 'Manrope';
+        font-style: normal;
+        font-weight: 400 800;
+        font-display: swap;
+        src: url('${asset("assets/fonts/manrope.woff2")}') format('woff2'),
+             url('${asset("assets/fonts/manrope.woff")}') format('woff'),
+             url('${asset("assets/fonts/manrope.ttf")}') format('truetype');
+      }
+    `} />
 
     <!-- Phosphor Icons & Font Awesome Brands -->
     <script src="https://unpkg.com/@phosphor-icons/web" is:inline></script>
