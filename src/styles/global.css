@@ -638,11 +638,16 @@ body.menu-open {
   display: block;
   font-family: var(--font-primary);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 1.5px;
-  color: var(--color-green);
+  color: var(--color-cyan-dark);
   margin-bottom: 24px;
   text-transform: uppercase;
+}
+
+.hero .eyebrow {
+  color: var(--color-green);
+  font-weight: 600;
 }
 
 .hero h1 {
