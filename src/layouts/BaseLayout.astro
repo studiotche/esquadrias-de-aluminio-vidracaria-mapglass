@@ -68,7 +68,14 @@ const faqSchema = {
     <!-- Favicon -->
     <link rel="icon" type="image/png" href={asset(site.assets.favicon)} />
 
-    <!-- Local Fonts: Manrope -->
+    <!-- Local Fonts Preload (woff2) -->
+    <link
+      rel="preload"
+      href={asset("assets/fonts/Poppins-Regular.woff2")}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link
       rel="preload"
       href={asset("assets/fonts/manrope.woff2")}
@@ -78,9 +85,27 @@ const faqSchema = {
     />
     <style is:inline set:html={`
       @font-face {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('${asset("assets/fonts/Poppins-Regular.woff2")}') format('woff2'),
+             url('${asset("assets/fonts/Poppins-Regular.woff")}') format('woff'),
+             url('${asset("assets/fonts/Poppins-Regular.ttf")}') format('truetype');
+      }
+      @font-face {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('${asset("assets/fonts/Poppins-SemiBold.woff2")}') format('woff2'),
+             url('${asset("assets/fonts/Poppins-SemiBold.woff")}') format('woff'),
+             url('${asset("assets/fonts/Poppins-SemiBold.ttf")}') format('truetype');
+      }
+      @font-face {
         font-family: 'Manrope';
         font-style: normal;
-        font-weight: 400 800;
+        font-weight: 700 800;
         font-display: swap;
         src: url('${asset("assets/fonts/manrope.woff2")}') format('woff2'),
              url('${asset("assets/fonts/manrope.woff")}') format('woff'),
