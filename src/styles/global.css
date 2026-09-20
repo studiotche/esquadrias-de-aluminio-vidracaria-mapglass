@@ -3,12 +3,12 @@
   font-style: normal;
   font-weight: 400 800;
   font-display: swap;
-  src: url('/fonts/manrope.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/manrope.woff2') format('woff2'),
-       url('/fonts/manrope.woff') format('woff'),
-       url('/fonts/manrope.ttf') format('truetype'),
-       url('/fonts/manrope.otf') format('opentype'),
-       url('/fonts/manrope.svg#Manrope') format('svg');
+  src: url('/assets/fonts/manrope.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/manrope.woff2') format('woff2'),
+       url('/assets/fonts/manrope.woff') format('woff'),
+       url('/assets/fonts/manrope.ttf') format('truetype'),
+       url('/assets/fonts/manrope.otf') format('opentype'),
+       url('/assets/fonts/manrope.svg#Manrope') format('svg');
 }
 
 :root {
