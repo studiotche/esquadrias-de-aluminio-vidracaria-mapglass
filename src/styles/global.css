@@ -1851,18 +1851,18 @@ body.menu-open {
 /* Notebook / Laptop Viewports */
 @media (max-width: 1366px) {
   .hero h1 {
-    font-size: 2.85rem;
+    font-size: 2.4rem;
   }
 
   .solutions-title-group h2,
   .projects-title-group h2 {
-    font-size: 2.25rem;
+    font-size: 1.9rem;
   }
 
   .about-content h2,
   .faq-header h2,
   .testimonial-heading h2 {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
   }
 
   .about-container {
@@ -1973,6 +1973,7 @@ body.menu-open {
     width: 100%;
     height: auto;
     aspect-ratio: auto;
+    z-index: 1;
   }
 
   .hero-bg picture,
@@ -1997,6 +1998,7 @@ body.menu-open {
     justify-content: flex-start;
     padding-top: 0;
     padding-bottom: 40px;
+    z-index: 2;
   }
 
   .testimonial-grid {
@@ -2067,10 +2069,12 @@ body.menu-open {
     gap: 40px;
   }
 
+  .solutions-title-group h2,
   .projects-title-group h2,
   .about-content h2,
+  .testimonial-heading h2,
   .cta-title {
-    font-size: 2rem;
+    font-size: 1.65rem;
   }
 
   .projects-grid {
