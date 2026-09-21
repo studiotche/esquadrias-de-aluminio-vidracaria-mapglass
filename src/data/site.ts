@@ -54,7 +54,7 @@ export const site = {
   seo: {
     title: "MAP GLASS | Esquadrias de Alumínio & Vidraçaria em Novo Hamburgo",
     description: "Soluções sob medida em Novo Hamburgo e Vale dos Sinos: esquadrias de alumínio, vidros temperados, box elegance, espelhos com LED, fachadas e sacadas. Solicite seu orçamento.",
-    url: "https://studiotche.github.io/vidracaria-esquadria-mapglass",
+    url: "https://studiotche.github.io/esquadrias-de-aluminio-vidracaria-mapglass",
     ogImage: "/assets/images/esquadrias-vidrcaria-mapglass-hero.webp",
   },
   assets: {

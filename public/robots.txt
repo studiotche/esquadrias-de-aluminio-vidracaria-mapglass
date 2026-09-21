@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://studiotche.github.io/vidracaria-esquadria-mapglass/sitemap-index.xml
+Sitemap: https://studiotche.github.io/esquadrias-de-aluminio-vidracaria-mapglass/sitemap-index.xml

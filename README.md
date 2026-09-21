@@ -33,4 +33,4 @@ O projeto conta com o workflow oficial do Astro configurado em `.github/workflow
 A cada push na branch `main`:
 1. O GitHub Actions compila o site estático usando `withastro/action`.
 2. Os artefatos são publicados automaticamente no GitHub Pages em:
-   `https://studiotche.github.io/vidracaria-esquadria-mapglass/`
+   `https://studiotche.github.io/esquadrias-de-aluminio-vidracaria-mapglass/`
