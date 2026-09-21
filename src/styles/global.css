@@ -2103,7 +2103,13 @@ body.menu-open {
   }
 
   .about-image-wrapper {
-    height: 350px;
+    height: auto;
+  }
+
+  .about-image {
+    object-fit: contain;
+    object-position: center;
+    height: auto;
   }
 
   .cta-btn {
