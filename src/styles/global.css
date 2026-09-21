@@ -1253,43 +1253,53 @@ body.menu-open {
   padding: 0 16px 24px;
 }
 
-/* CTA Section */
+/* CTA Section (Contato) */
 .cta-section {
   background-color: var(--color-green);
-  padding: 80px 0;
+  padding: 64px 0;
 }
 
 .cta-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .cta-title {
-  font-size: clamp(1.5rem, 2vw, 1.85rem);
+  font-size: clamp(1.75rem, 2.5vw, 2.35rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--color-dark);
   letter-spacing: -0.5px;
-  flex: 0 0 auto;
+  text-align: center;
+  margin: 0;
 }
 
 .cta-divider {
-  width: 1px;
-  height: 48px;
-  background-color: rgba(25, 35, 33, 0.2);
+  display: none;
 }
 
 .cta-text {
-  font-size: 1.05rem;
+  font-size: clamp(1.05rem, 1.3vw, 1.2rem);
   color: var(--color-dark);
-  line-height: 1.4;
-  flex: 1;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+  max-width: 540px;
+  opacity: 0.95;
 }
 
 .cta-btn {
-  flex: 0 0 auto;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
   white-space: nowrap;
 }
 
@@ -1946,8 +1956,8 @@ body.menu-open {
 
   .cta-container {
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
     gap: 16px;
   }
 
@@ -2129,7 +2139,9 @@ body.menu-open {
   }
 
   .cta-btn {
-    width: 100%;
+    align-self: center;
+    width: auto;
+    max-width: 100%;
     margin-top: 8px;
   }
 
