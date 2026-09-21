@@ -530,12 +530,14 @@ body.menu-open {
 
   .hero-animate-up {
     opacity: 0;
-    animation: 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards heroFadeUp;
+    will-change: opacity, transform;
+    animation: 0.7s cubic-bezier(0.22, 1, 0.36, 1) both heroFadeUp;
   }
 
   .hero-animate-scale {
     opacity: 0;
-    animation: 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards heroScaleIn;
+    will-change: opacity, transform;
+    animation: 0.8s cubic-bezier(0.22, 1, 0.36, 1) both heroScaleIn;
   }
 
   .hero-delay-80 {
@@ -580,9 +582,7 @@ body.menu-open {
     scroll-behavior: auto;
   }
 
-  .fade-in-hidden,
-  .hero-animate-up,
-  .hero-animate-scale {
+  .fade-in-hidden {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
