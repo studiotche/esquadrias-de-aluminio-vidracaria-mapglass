@@ -597,6 +597,7 @@ body.menu-open {
   display: flex;
   align-items: center;
   overflow: hidden;
+  background-color: #192321;
 }
 
 .hero-bg {
@@ -606,6 +607,7 @@ body.menu-open {
   width: 100%;
   height: 100%;
   z-index: -1;
+  background-color: #192321;
 }
 
 .hero-bg picture,
@@ -615,6 +617,10 @@ body.menu-open {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  /* Imagem da hero sem animação de entrada: render estático e instantâneo */
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .hero-overlay {

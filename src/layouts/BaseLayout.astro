@@ -120,6 +120,15 @@ const faqSchema = {
       as="image"
       type="image/webp"
       media="(max-width: 768px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      href={asset("assets/images/esquadrias-vidrcaria-mapglass-hero.webp")}
+      as="image"
+      type="image/webp"
+      media="(min-width: 769px)"
+      fetchpriority="high"
     />
 
     <!-- Theme Color & Meta Tags -->
