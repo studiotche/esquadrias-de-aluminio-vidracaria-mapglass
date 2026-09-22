@@ -44,6 +44,86 @@ export function initializeSite(): void {
     });
   }
 
+  // Hero word-by-word reveal animation (desktop only)
+  const heroContent = document.querySelector<HTMLElement>('.hero-content');
+  const isDesktopHero = window.matchMedia('(min-width: 761px)').matches;
+
+  if (heroContent && isDesktopHero) {
+    const heroEyebrow = heroContent.querySelector<HTMLElement>('.eyebrow');
+    const heroTitle = heroContent.querySelector<HTMLElement>('h1');
+    const heroTagline = heroContent.querySelector<HTMLElement>('.hero-tagline');
+    const heroLead = heroContent.querySelector<HTMLElement>('.lead');
+    const heroActions = heroContent.querySelector<HTMLElement>('.hero-actions');
+    const heroCaption = heroContent.querySelector<HTMLElement>('.hero-caption');
+
+    const splitHeroWords = (element: HTMLElement | null): HTMLElement[] => {
+      if (!element) return [];
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const textNodes: Text[] = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+      const words = textNodes.flatMap((node) => {
+        const isHighlight = node.parentElement?.closest('.highlight') !== null;
+        return (node.textContent || '')
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean)
+          .map((text) => ({ text, isHighlight }));
+      });
+      element.replaceChildren();
+      return words.map(({ text, isHighlight }) => {
+        const word = document.createElement('span');
+        word.className = `hero-reveal-word${isHighlight ? ' highlight' : ''}`;
+        word.textContent = text;
+        element.append(word, ' ');
+        return word;
+      });
+    };
+
+    const scheduleHeroWords = (words: HTMLElement[], startDelay: number): number => {
+      let line = 0;
+      let wordInLine = 0;
+      let previousTop: number | null = null;
+      words.forEach((word) => {
+        const currentTop = word.offsetTop;
+        if (previousTop !== null && Math.abs(currentTop - previousTop) > 2) {
+          line += 1;
+          wordInLine = 0;
+        }
+        word.style.setProperty('--hero-delay', `${startDelay + line * 0.07 + wordInLine * 0.018}s`);
+        wordInLine += 1;
+        previousTop = currentTop;
+      });
+      return line + 1;
+    };
+
+    const startHeroReveal = (): void => {
+      const titleWords = splitHeroWords(heroTitle);
+      const taglineWords = splitHeroWords(heroTagline);
+      const leadWords = splitHeroWords(heroLead);
+      heroContent.classList.add('hero-reveal-ready');
+      const eyebrowDelay = 0.05;
+      const titleDelay = 0.12;
+      const titleLines = scheduleHeroWords(titleWords, titleDelay);
+      const taglineDelay = titleDelay + titleLines * 0.07 + 0.24;
+      const taglineLines = scheduleHeroWords(taglineWords, taglineDelay);
+      const leadDelay = taglineDelay + taglineLines * 0.07 + 0.24;
+      const leadLines = scheduleHeroWords(leadWords, leadDelay);
+      const actionsDelay = leadDelay + leadLines * 0.07 + 0.24;
+      const captionDelay = actionsDelay + 0.3;
+      heroEyebrow?.style.setProperty('--hero-delay', `${eyebrowDelay}s`);
+      heroActions?.querySelectorAll<HTMLElement>(':scope > *').forEach((item, index) => {
+        item.style.setProperty('--hero-delay', `${actionsDelay + index * 0.06}s`);
+      });
+      heroCaption?.style.setProperty('--hero-delay', `${captionDelay}s`);
+    };
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(startHeroReveal);
+    } else {
+      startHeroReveal();
+    }
+  }
+
   // FAQ Smooth Accordion (Exact parity with Instalacao-ar-condicionado-am-climatizar)
   const faqItems = document.querySelectorAll<HTMLDetailsElement>('.faq-list details');
   if (faqItems.length) {

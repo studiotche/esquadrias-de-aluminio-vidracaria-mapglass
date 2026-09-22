@@ -504,67 +504,42 @@ body.menu-open {
   transform: translateY(0);
 }
 
-/* Hero Entrance Animation (Desktop Only >= 761px) */
+/* Hero Entrance Animation — word-by-word reveal (Desktop Only >= 761px) */
 @media (min-width: 761px) {
-  @keyframes heroFadeUp {
-    0% {
+  @keyframes hero-line-rise {
+    from {
       opacity: 0;
       transform: translateY(16px);
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
-  @keyframes heroScaleIn {
-    0% {
-      opacity: 0;
-      transform: scale(1.025);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+  .hero-content.hero-reveal-ready > .eyebrow,
+  .hero-content.hero-reveal-ready > .hero-caption,
+  .hero-content.hero-reveal-ready .hero-actions > * {
+    animation: hero-line-rise .45s cubic-bezier(.22, .61, .36, 1) backwards;
+    animation-delay: var(--hero-delay, 0s);
   }
 
-  .hero-animate-up {
-    opacity: 0;
-    will-change: opacity, transform;
-    animation: 0.7s cubic-bezier(0.22, 1, 0.36, 1) both heroFadeUp;
-  }
-
-  .hero-animate-scale {
-    opacity: 0;
-    will-change: opacity, transform;
-    animation: 0.8s cubic-bezier(0.22, 1, 0.36, 1) both heroScaleIn;
-  }
-
-  .hero-delay-80 {
-    animation-delay: 80ms;
-  }
-
-  .hero-delay-160 {
-    animation-delay: 160ms;
-  }
-
-  .hero-delay-240 {
-    animation-delay: 240ms;
-  }
-
-  .hero-delay-320 {
-    animation-delay: 320ms;
+  .hero-content.hero-reveal-ready .hero-reveal-word {
+    display: inline-block;
+    animation: hero-line-rise .42s cubic-bezier(.22, .61, .36, 1) backwards;
+    animation-delay: var(--hero-delay, 0s);
   }
 }
 
 /* Reset explícito para Mobile (<= 760px): carregamento estático e instantâneo sem layout shift */
 @media (max-width: 760px) {
-  .hero-animate-up,
-  .hero-animate-scale,
-  .hero-delay-80,
-  .hero-delay-160,
-  .hero-delay-240,
-  .hero-delay-320,
+  .hero-content > .eyebrow,
+  .hero-content > .hero-caption,
+  .hero-content .hero-actions > *,
+  .hero-content .hero-reveal-word,
+  .hero-content.hero-reveal-ready > .eyebrow,
+  .hero-content.hero-reveal-ready > .hero-caption,
+  .hero-content.hero-reveal-ready .hero-actions > *,
+  .hero-content.hero-reveal-ready .hero-reveal-word,
+  .hero h1,
+  .hero-tagline,
+  .lead,
   .hero *,
   .hero-content *,
   .fade-in-hidden {
@@ -588,6 +563,7 @@ body.menu-open {
     transform: none !important;
   }
 }
+
 
 /* Hero */
 .hero {
@@ -674,7 +650,7 @@ body.menu-open {
   text-wrap: balance;
 }
 
-.hero-highlight {
+.highlight {
   color: var(--color-cyan);
   font-family: var(--font-heading);
   font-weight: 700;
